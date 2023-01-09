@@ -1,5 +1,6 @@
 package com.example.jetpackcomponentscatalog
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -15,12 +16,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.rounded.Star
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -54,73 +51,74 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    var myText by remember { mutableStateOf("") }
-                    var showLoading by remember { mutableStateOf(show) }
-
-                    var selected by rememberSaveable { mutableStateOf("Radio Button 1") }
-
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp)
-                            .verticalScroll(rememberScrollState()),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        MyTextFieldOutlined(myText) { myText = it }
-
-                        Spacer(modifier = Modifier
-                            .height(16.dp)
-                            .fillMaxWidth())
-
-                        MyButtonExample()
-
-                        MyOutlinedButtonExample { myViewModel.modifyMutable() }
-                        MyTextButton()
-                        MyImage()
-                        MyImageAdvanced()
-                        MyIcon()
-                        MyProgressBar()
-                        MyAdvancedProgressBar(show)
-                        MySuperAdvancedProgress()
-                        MySwitch()
-                        MyCheckBox()
-                        MyAdvancedCheckBox()
-                        /**
-                         * Grupo de checkBox
-                         */
-                        val myOptions =
-                            getOptions(listOf("Ejemplo 1", "Tenes dinero?", "Checkeame"))
-                        myOptions.forEach { MyAdvancedCheckBoxCompleted(it) }
-                        MyTriStatusCheckBox()
-                        MyRadioButton()
-                        MyRadioButtonList(selected) { selected = it }
-                        MyCard()
-                        MyBadgeBox()
-                        MySecondBadgeBox()
-                        MyDivider()
-                        MyDropDownMenu()
-                        BasicSlider()
-                        MyRangeSlider()
-
-                        var show by remember { mutableStateOf(false) }
-                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                            Button(onClick = { show = true }) {
-                                Text(text = "Mostrar dialogo")
-                            }
-                            MyConfirmationDialog(show, onDismiss = {show = false}, onConfirm = { showToast() })
-
+//                    var myText by remember { mutableStateOf("") }
+//                    var showLoading by remember { mutableStateOf(show) }
+//
+//                    var selected by rememberSaveable { mutableStateOf("Radio Button 1") }
+//
+//
+//                    Column(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            .padding(16.dp)
+//                            .verticalScroll(rememberScrollState()),
+//                        horizontalAlignment = Alignment.CenterHorizontally,
+//                    ) {
+//                        MyTextFieldOutlined(myText) { myText = it }
+//
+//                        Spacer(modifier = Modifier
+//                            .height(16.dp)
+//                            .fillMaxWidth())
+//
+//                        MyButtonExample()
+//
+//                        MyOutlinedButtonExample { myViewModel.modifyMutable() }
+//                        MyTextButton()
+//                        MyImage()
+//                        MyImageAdvanced()
+//                        MyIcon()
+//                        MyProgressBar()
+//                        MyAdvancedProgressBar(show)
+//                        MySuperAdvancedProgress()
+//                        MySwitch()
+//                        MyCheckBox()
+//                        MyAdvancedCheckBox()
+//                        /**
+//                         * Grupo de checkBox
+//                         */
+//                        val myOptions =
+//                            getOptions(listOf("Ejemplo 1", "Tenes dinero?", "Checkeame"))
+//                        myOptions.forEach { MyAdvancedCheckBoxCompleted(it) }
+//                        MyTriStatusCheckBox()
+//                        MyRadioButton()
+//                        MyRadioButtonList(selected) { selected = it }
+//                        MyCard()
+//                        MyBadgeBox()
+//                        MySecondBadgeBox()
+//                        MyDivider()
+//                        MyDropDownMenu()
+//                        BasicSlider()
+//                        MyRangeSlider()
+//
+//                        var show by remember { mutableStateOf(false) }
+//                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+//                            Button(onClick = { show = true }) {
+//                                Text(text = "Mostrar dialogo")
+//                            }
+//                            MyConfirmationDialog(show, onDismiss = {show = false}, onConfirm = { showToast() })
+//
+                    SuperHeroStickyView()
                         }
                     }
                 }
             }
         }
+
+
+    private fun showToast(context: Context) {
+        Toast.makeText(context, "This is a Toast", Toast.LENGTH_SHORT).show()
     }
 
-    private fun showToast() {
-        Toast.makeText(this, "This is a Toast", Toast.LENGTH_SHORT).show()
-    }
-}
 
 @Composable
 fun MyDropDownMenu() {
