@@ -34,6 +34,11 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcomponentscatalog.model.Routes
+import com.example.jetpackcomponentscatalog.model.Routes.*
 import com.example.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,69 +55,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
-//                    var myText by remember { mutableStateOf("") }
-//                    var showLoading by remember { mutableStateOf(show) }
-//
-//                    var selected by rememberSaveable { mutableStateOf("Radio Button 1") }
-//
-//
-//                    Column(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .padding(16.dp)
-//                            .verticalScroll(rememberScrollState()),
-//                        horizontalAlignment = Alignment.CenterHorizontally,
-//                    ) {
-//                        MyTextFieldOutlined(myText) { myText = it }
-//
-//                        Spacer(modifier = Modifier
-//                            .height(16.dp)
-//                            .fillMaxWidth())
-//
-//                        MyButtonExample()
-//
-//                        MyOutlinedButtonExample { myViewModel.modifyMutable() }
-//                        MyTextButton()
-//                        MyImage()
-//                        MyImageAdvanced()
-//                        MyIcon()
-//                        MyProgressBar()
-//                        MyAdvancedProgressBar(show)
-//                        MySuperAdvancedProgress()
-//                        MySwitch()
-//                        MyCheckBox()
-//                        MyAdvancedCheckBox()
-//                        /**
-//                         * Grupo de checkBox
-//                         */
-//                        val myOptions =
-//                            getOptions(listOf("Ejemplo 1", "Tenes dinero?", "Checkeame"))
-//                        myOptions.forEach { MyAdvancedCheckBoxCompleted(it) }
-//                        MyTriStatusCheckBox()
-//                        MyRadioButton()
-//                        MyRadioButtonList(selected) { selected = it }
-//                        MyCard()
-//                        MyBadgeBox()
-//                        MySecondBadgeBox()
-//                        MyDivider()
-//                        MyDropDownMenu()
-//                        BasicSlider()
-//                        MyRangeSlider()
-//
-//                        var show by remember { mutableStateOf(false) }
-//                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-//                            Button(onClick = { show = true }) {
-//                                Text(text = "Mostrar dialogo")
-//                            }
-//                            MyConfirmationDialog(show, onDismiss = {show = false}, onConfirm = { showToast() })
-//
-                    MyScaffold()
-                        }
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = Screen1.route) {
+                        composable(Screen1.route) { Screen1(navController) }
+                        composable(Screen2.route) { Screen2(navController) }
+                        composable(Screen3.route) { Screen3(navController) }
                     }
                 }
             }
         }
+    }
+}
 
 
     private fun showToast(context: Context) {
@@ -216,9 +169,11 @@ fun MyCard() {
 @Composable
 fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
     Column(Modifier.fillMaxWidth()) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
-            onItemSelected("Radio Button 1")
-        }.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable {
+                onItemSelected("Radio Button 1")
+            }
+            .fillMaxWidth()) {
             RadioButton(
                 selected = name == "Radio Button 1",
                 onClick = { onItemSelected("Radio Button 1") },
@@ -234,9 +189,11 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
                 .height(0.dp))
             Text(text = "Radio Button 1")
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
-            onItemSelected("Radio Button 2")
-        }.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable {
+                onItemSelected("Radio Button 2")
+            }
+            .fillMaxWidth()) {
             RadioButton(
                 selected = name == "Radio Button 2",
                 onClick = { onItemSelected("Radio Button 2") },
@@ -255,9 +212,11 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
             )
             Text(text = "Radio Button 2")
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
-            onItemSelected("Radio Button 3")
-        }.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable {
+                onItemSelected("Radio Button 3")
+            }
+            .fillMaxWidth()) {
             RadioButton(
                 selected = name == "Radio Button 3",
                 onClick = { onItemSelected("Radio Button 3") },
@@ -276,9 +235,11 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
             )
             Text(text = "Radio Button 3")
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
-            onItemSelected("Radio Button 4")
-        }.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+            .clickable {
+                onItemSelected("Radio Button 4")
+            }
+            .fillMaxWidth()) {
             RadioButton(
                 selected = name == "Radio Button 4",
                 onClick = { onItemSelected("Radio Button 4") },
