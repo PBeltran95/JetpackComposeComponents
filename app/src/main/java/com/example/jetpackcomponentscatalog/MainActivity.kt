@@ -107,7 +107,7 @@ class MainActivity : ComponentActivity() {
 //                            }
 //                            MyConfirmationDialog(show, onDismiss = {show = false}, onConfirm = { showToast() })
 //
-                    SuperHeroStickyView()
+                    MyScaffold()
                         }
                     }
                 }
