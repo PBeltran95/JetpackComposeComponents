@@ -96,7 +96,6 @@ fun SuperHeroViewSpecialControl() {
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SuperHeroGridView() {
     val context = LocalContext.current

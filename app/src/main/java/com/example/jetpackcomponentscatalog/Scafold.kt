@@ -1,9 +1,8 @@
 package com.example.jetpackcomponentscatalog
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -37,9 +36,7 @@ fun MyScaffold() {
         isFloatingActionButtonDocked = false,
         drawerContent = { MyNavigationDrawer(onCloseDrawer = { coroutineScope.launch { scaffoldState.drawerState.close() } }) },
         drawerGesturesEnabled = true
-    ) {
-
-    }
+    ) { }
 }
 
 @Composable
@@ -87,20 +84,20 @@ fun MyNavigationDrawer(onCloseDrawer: () -> Unit) {
     Column(Modifier.padding(8.dp)) {
         Text(text = "Opcion 1",
             modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
                 .clickable { onCloseDrawer() }
         )
         Text(text = "Opcion 2",
             modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
                 .clickable { onCloseDrawer() }
         )
         Text(text = "Opcion 3",
             modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
                 .clickable { onCloseDrawer() }
         )
     }

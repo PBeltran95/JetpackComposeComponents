@@ -34,9 +34,11 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.jetpackcomponentscatalog.model.Routes
 import com.example.jetpackcomponentscatalog.model.Routes.*
 import com.example.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
@@ -60,6 +62,14 @@ class MainActivity : ComponentActivity() {
                         composable(Screen1.route) { Screen1(navController) }
                         composable(Screen2.route) { Screen2(navController) }
                         composable(Screen3.route) { Screen3(navController) }
+                        composable("pantalla4/{name}", arguments = listOf(navArgument("name") {
+                            type = NavType.IntType
+                        })) { backStackEntry ->
+                            Screen4(
+                                navController,
+                                backStackEntry.arguments?.getInt("name") ?: 0
+                            )
+                        }
                     }
                 }
             }
