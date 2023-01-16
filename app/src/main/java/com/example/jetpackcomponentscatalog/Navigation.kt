@@ -11,23 +11,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.example.jetpackcomponentscatalog.model.Routes
-import com.example.jetpackcomponentscatalog.model.Routes.Screen2
-import com.example.jetpackcomponentscatalog.model.Routes.Screen3
+import com.example.jetpackcomponentscatalog.model.Routes.*
 
 @Composable
 fun Screen1(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Cyan)
-    ) {
-        Text(text = "Pantalla 1", modifier = Modifier
-            .align(Alignment.Center)
-            .clickable {
+            .background(Color.Cyan).clickable {
                 navController.navigate(
                     Screen2.route
                 )
-            })
+            }
+    ) {
+        Text(text = "Pantalla 1", modifier = Modifier
+            .align(Alignment.Center)
+            )
     }
 }
 
@@ -37,14 +36,15 @@ fun Screen2(navController: NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Green)
-    ) {
-        Text(text = "Pantalla 2", modifier = Modifier
-            .align(Alignment.Center)
             .clickable {
                 navController.navigate(
                     Screen3.route
                 )
-            })
+            }
+    ) {
+        Text(text = "Pantalla 2", modifier = Modifier
+            .align(Alignment.Center)
+            )
     }
 }
 
@@ -54,11 +54,12 @@ fun Screen3(navController: NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.DarkGray)
+            .clickable { navController.navigate(Screen1.route) }
     ) {
         Text(
             text = "Pantalla 3",
             modifier = Modifier
                 .align(Alignment.Center)
-                .clickable { navController.navigate(Screen2.route) })
+        )
     }
 }
